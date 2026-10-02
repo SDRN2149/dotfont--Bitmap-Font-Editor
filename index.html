@@ -1,0 +1,3175 @@
+<link rel="icon" type="image/png" href="/icon.png" />
+
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>라떼마을</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+</head>
+
+
+<body>
+
+  <!-- ========================================
+       헤더
+  ========================================= -->
+
+  <header class="header">
+
+    <h1>☕ 라떼마을</h1>
+
+    <div
+      id="headerGold"
+      class="header-gold"
+    >
+      💰 500G
+    </div>
+
+  </header>
+
+
+  <main class="main">
+
+
+<!-- ========================================
+     상태창
+========================================= -->
+
+<section class="status-card">
+
+  <span id="statusLevel">Lv. 1</span>
+  <span id="statusJob">직업 없음</span>
+
+  <span id="gameClock">
+    🌅 1일차 · 06:00
+  </span>
+
+  <span id="statusGold">
+    💰 500G
+  </span>
+
+  <span id="statusXP">⭐ 0 / 100 XP</span>
+
+</section>
+
+
+
+    <!-- ========================================
+         나의 작은 땅
+    ========================================= -->
+
+    <section class="land-section">
+
+      <h2>
+        🏠 나의 작은 땅
+      </h2>
+
+      <div class="land-content">
+
+        <button
+          id="homeButton"
+          class="land-card"
+        >
+          🏠 우리 집
+        </button>
+
+
+        <button
+          id="farmButton"
+          class="land-card"
+        >
+          🌱 텃밭
+        </button>
+
+
+<button
+  id="pondButton"
+  class="land-card"
+>
+  🎣 연못
+</button>
+
+
+<button
+  id="forestButton"
+  class="land-card"
+>
+  🌲 숲
+</button>
+
+<button
+  id="mineButton"
+  class="land-card"
+>
+  ⛏️ 광산
+</button>
+
+
+<!-- 새로 추가된 축산 농장 -->
+
+        <button
+          id="animalFarmButton"
+          class="land-card animal-farm-button locked"
+        >
+          🔒 축산 농장
+        </button>
+
+
+        <button
+          id="shopButton"
+          class="land-card"
+        >
+          🏪 마을 상점
+        </button>
+
+<button
+  id="requestBoardButton"
+  class="land-card"
+>
+  📌 의뢰 게시판
+</button>
+
+
+<button
+  id="workshopButton"
+  class="land-card"
+>
+  🔨 공방
+</button>
+
+      </div>
+
+    </section>
+
+
+
+
+
+    <!-- ========================================
+         우리 집
+    ========================================= -->
+
+    <section
+      id="homeSection"
+      class="home-section"
+    >
+
+      <div class="home-header">
+
+        <div>
+
+          <h2>
+            🏠 우리 집
+          </h2>
+
+          <p>
+            가방의 물건을 보관하거나 다시 꺼낼 수 있어요.
+          </p>
+
+        </div>
+
+        <button
+          id="homeClose"
+          class="section-close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="home-content">
+
+
+        <!-- 가방 -->
+
+        <div class="home-inventory-area">
+
+          <div class="storage-title-row">
+
+            <div>
+
+              <h3>
+                🎒 내 가방
+              </h3>
+
+              <p>
+                밖에서 사용하는 물건이에요.
+              </p>
+
+            </div>
+
+            <span
+              id="homeInventoryCount"
+              class="slot-count"
+            >
+              0 / 12
+            </span>
+
+          </div>
+
+
+          <div
+            id="homeInventoryGrid"
+            class="storage-grid home-inventory-grid"
+          >
+          </div>
+
+        </div>
+
+
+
+        <!-- 이동 안내 -->
+
+        <div class="storage-guide">
+
+          <span>
+            ⇄
+          </span>
+
+          <small>
+            아이템을 우클릭해서<br>
+            이동할 수 있어요.
+          </small>
+
+        </div>
+
+
+
+        <!-- 보관함 -->
+
+        <div class="home-storage-area">
+
+          <div class="storage-title-row">
+
+            <div>
+
+              <h3>
+                📦 보관함
+              </h3>
+
+              <p>
+                집에 안전하게 보관해요.
+              </p>
+
+            </div>
+
+            <span
+              id="storageCount"
+              class="slot-count"
+            >
+              0 / 30
+            </span>
+
+          </div>
+
+
+          <div
+            id="storageGrid"
+            class="storage-grid"
+          >
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ========================================
+           가구 보관함
+      ========================================= -->
+
+      <div
+        id="furnitureStorageArea"
+        class="furniture-storage-area"
+      >
+
+        <div class="furniture-storage-header">
+
+          <div>
+
+            <h3>
+              🪑 가구 보관함
+            </h3>
+
+            <p>
+              공방에서 제작한 가구를 보관해요.
+            </p>
+
+          </div>
+
+          <button
+            id="decorateHouseButton"
+            class="decorate-house-button"
+            type="button"
+          >
+            🏡 집 꾸미기
+          </button>
+
+        </div>
+
+
+        <div
+          id="furnitureInventoryGrid"
+          class="furniture-inventory-grid"
+        >
+
+          <div class="furniture-empty-message">
+            아직 가지고 있는 가구가 없어요.
+          </div>
+
+        </div>
+
+      </div>
+
+
+<!-- ========================================
+     집 꾸미기
+========================================= -->
+
+<div
+  id="houseDecorArea"
+  class="house-decor-area"
+>
+
+<div class="house-decor-header">
+
+  <div>
+    <h3>🏡 집 꾸미기</h3>
+    <p>가구를 배치해서 나만의 방을 꾸며보세요.</p>
+  </div>
+
+  <div class="house-decor-actions">
+
+    <button
+      id="rotateFurnitureButton"
+      class="rotate-furniture-button"
+      type="button"
+    >
+      🔄 회전
+    </button>
+
+    <button
+      id="closeDecorButton"
+      class="close-decor-button"
+      type="button"
+    >
+      꾸미기 종료
+    </button>
+
+  </div>
+
+</div>
+
+
+  <div class="house-decor-content">
+
+
+    <!-- 방 -->
+
+    <div class="house-room-area">
+
+      <div class="house-room-title">
+
+        <strong>
+          🏠 내 방
+        </strong>
+
+        <span>
+          6 × 6
+        </span>
+
+      </div>
+
+
+      <div
+        id="houseGrid"
+        class="house-grid"
+      >
+      </div>
+
+    </div>
+
+
+<div class="house-effect-panel">
+
+  <div class="house-effect-header">
+    <strong>✨ 활성 효과</strong>
+    <small>가구 배치에 따라 효과가 활성화돼요.</small>
+  </div>
+
+  <div id="houseEffectList" class="house-effect-list">
+
+    <div class="house-effect-empty">
+      아직 활성화된 효과가 없어요.
+    </div>
+
+  </div>
+
+</div>
+
+    <!-- 배치할 가구 -->
+
+    <div class="decor-furniture-area">
+
+      <div class="decor-furniture-title">
+
+        <strong>
+          🪑 보유 가구
+        </strong>
+
+        <small>
+          배치할 가구를 선택하세요.
+        </small>
+
+      </div>
+
+
+      <div
+        id="decorFurnitureList"
+        class="decor-furniture-list"
+      >
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+      <!-- ========================================
+           침대
+      ========================================= -->
+
+      <div
+        id="bedArea"
+        class="bed-area"
+      >
+
+        <div class="bed-info">
+
+          <div class="bed-icon">
+            🛏️
+          </div>
+
+          <div>
+
+            <h3>
+              포근한 침대
+            </h3>
+
+            <p>
+              잠을 자고 다음 날 아침을 맞이할 수 있어요.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <button
+          id="sleepButton"
+          class="sleep-button"
+          type="button"
+        >
+          🌙 잠자기
+        </button>
+
+      </div>
+
+
+
+            <!-- ========================================
+           부엌
+      ========================================= -->
+
+      <div
+        id="kitchenArea"
+        class="kitchen-area"
+      >
+
+        <div class="kitchen-header">
+
+          <div>
+
+            <h3>
+              🍳 부엌
+            </h3>
+
+            <p>
+              가지고 있는 재료를 이용해 음식을 만들 수 있어요.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="recipe-grid">
+
+
+          <!-- 버터감자 -->
+
+          <div class="recipe-card">
+
+            <div class="recipe-icon">
+              🥔
+            </div>
+
+            <strong>
+              버터감자
+            </strong>
+
+            <small>
+              🥔 감자 1 + 🧈 버터 1
+            </small>
+
+            <button
+              id="cookButterPotatoButton"
+              class="cook-button"
+            >
+              🍳 요리하기
+            </button>
+
+          </div>
+
+
+          <!-- 딸기우유 -->
+
+          <div class="recipe-card">
+
+            <div class="recipe-icon">
+              🥤
+            </div>
+
+            <strong>
+              딸기우유
+            </strong>
+
+            <small>
+              🍓 딸기 1 + 🥛 우유 1
+            </small>
+
+            <button
+              id="cookStrawberryMilkButton"
+              class="cook-button"
+            >
+              🍳 요리하기
+            </button>
+
+          </div>
+
+
+          <!-- 버섯볶음 -->
+
+          <div class="recipe-card">
+
+            <div class="recipe-icon">
+              🍳
+            </div>
+
+            <strong>
+              버섯볶음
+            </strong>
+
+            <small>
+              🍄 버섯 2 + 🥚 달걀 1
+            </small>
+
+            <button
+              id="cookMushroomButton"
+              class="cook-button"
+            >
+              🍳 요리하기
+            </button>
+
+          </div>
+
+
+          <!-- 베리우유 -->
+
+          <div class="recipe-card">
+
+            <div class="recipe-icon">
+              🫐
+            </div>
+
+            <strong>
+              베리우유
+            </strong>
+
+            <small>
+              🫐 베리 2 + 🥛 우유 1
+            </small>
+
+            <button
+              id="cookBerryMilkButton"
+              class="cook-button"
+            >
+              🍳 요리하기
+            </button>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <div class="home-help">
+
+        <span>
+          💡
+        </span>
+
+        <p>
+          좌클릭은 아이템 선택,
+          우클릭은 가방과 보관함 사이의 이동 메뉴를 엽니다.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================
+         텃밭
+    ========================================= -->
+
+    <section
+      id="farmSection"
+      class="farm-section"
+    >
+
+      <h2>
+        🌱 텃밭
+      </h2>
+
+
+      <div class="farm-grid">
+
+        <button class="plot-card">
+          <strong>빈 밭</strong>
+          <span>눌러서 심기</span>
+        </button>
+
+        <button class="plot-card">
+          <strong>빈 밭</strong>
+          <span>눌러서 심기</span>
+        </button>
+
+        <button class="plot-card">
+          <strong>빈 밭</strong>
+          <span>눌러서 심기</span>
+        </button>
+
+        <button class="plot-card">
+          <strong>빈 밭</strong>
+          <span>눌러서 심기</span>
+        </button>
+
+        <button class="plot-card">
+          <strong>빈 밭</strong>
+          <span>눌러서 심기</span>
+        </button>
+
+        <button class="plot-card">
+          <strong>빈 밭</strong>
+          <span>눌러서 심기</span>
+        </button>
+
+      </div>
+
+
+
+
+    </section>
+
+
+
+    <!-- ========================================
+         축산 농장
+    ========================================= -->
+
+    <section
+      id="animalFarmSection"
+      class="animal-farm-section"
+    >
+
+      <div class="animal-farm-header">
+
+        <div>
+
+          <h2>
+            🐄 축산 농장
+          </h2>
+
+          <p>
+            동물을 키우고 축산물을 생산할 수 있는 농장이에요.
+          </p>
+
+        </div>
+
+        <button
+          id="animalFarmClose"
+          class="section-close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+
+      <!-- 잠겨 있을 때 -->
+
+      <div
+        id="animalFarmLocked"
+        class="animal-farm-locked"
+      >
+
+        <div class="animal-farm-lock-icon">
+          🔒
+        </div>
+
+
+        <h3>
+          축산 농장이 잠겨 있어요
+        </h3>
+
+
+        <p>
+          농장을 구입하면 닭과 소 같은 동물을 키우고<br>
+          다양한 축산물을 생산할 수 있어요.
+        </p>
+
+
+        <div class="animal-farm-price">
+
+          <span>
+            농장 구입 비용
+          </span>
+
+          <strong>
+            💰 2,000G
+          </strong>
+
+        </div>
+
+
+        <div class="animal-farm-current-gold">
+
+          현재 보유금:
+
+          <strong id="animalFarmGold">
+            💰 500G
+          </strong>
+
+        </div>
+
+
+        <button
+          id="unlockAnimalFarmButton"
+          class="unlock-animal-farm-button"
+        >
+          🐄 농장 구입하기
+        </button>
+
+      </div>
+
+
+
+      <!-- 해금 후 -->
+
+      <div
+        id="animalFarmUnlocked"
+        class="animal-farm-unlocked"
+      >
+
+        <div class="animal-farm-info">
+
+          <div>
+
+            <h3>
+              🐾 나의 동물들
+            </h3>
+
+            <p>
+              동물에게 먹이를 주면 축산물을 생산해요.
+            </p>
+
+          </div>
+
+
+          <div class="animal-feed-info">
+
+            🌾 밀
+
+            <strong id="animalFarmWheatCount">
+              0개
+            </strong>
+
+          </div>
+
+        </div>
+
+
+<div class="animal-pen-grid">
+
+
+  <!-- ============================================ -->
+  <!-- 첫 번째 우리 : 닭 -->
+  <!-- ============================================ -->
+
+  <div
+    id="chickenPen"
+    class="animal-pen"
+  >
+
+    <!-- 닭이 없을 때 -->
+
+    <div
+      id="chickenEmptyState"
+      class="animal-empty-state"
+    >
+
+      <span class="animal-icon">
+        🪵
+      </span>
+
+      <strong>
+        비어 있는 우리
+      </strong>
+
+      <p>
+        새로운 동물을 입양할 수 있어요.
+      </p>
+
+      <button
+        id="adoptChickenButton"
+        class="animal-action-button"
+      >
+        🐔 닭 입양하기 · 300G
+      </button>
+
+    </div>
+
+
+    <!-- 닭을 입양한 뒤 -->
+
+    <div
+      id="chickenOwnedState"
+      class="animal-owned-state"
+    >
+
+      <span class="animal-icon">
+        🐔
+      </span>
+
+      <strong>
+        닭
+      </strong>
+
+      <p
+        id="chickenStatus"
+        class="animal-status"
+      >
+        배가 고픈 것 같아요.
+      </p>
+
+      <button
+        id="chickenActionButton"
+        class="animal-action-button"
+      >
+        🌾 밀 1개 먹이주기
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ============================================ -->
+  <!-- 두 번째 우리 : 소 -->
+  <!-- ============================================ -->
+
+  <div
+    id="cowPen"
+    class="animal-pen"
+  >
+
+    <!-- 소가 없을 때 -->
+
+    <div
+      id="cowEmptyState"
+      class="animal-empty-state"
+    >
+
+      <span class="animal-icon">
+        🪵
+      </span>
+
+      <strong>
+        비어 있는 우리
+      </strong>
+
+      <p>
+        새로운 동물을 입양할 수 있어요.
+      </p>
+
+      <button
+        id="adoptCowButton"
+        class="animal-action-button"
+      >
+        🐄 소 입양하기 · 800G
+      </button>
+
+    </div>
+
+
+    <!-- 소를 입양한 뒤 -->
+
+    <div
+      id="cowOwnedState"
+      class="animal-owned-state"
+    >
+
+      <span class="animal-icon">
+        🐄
+      </span>
+
+      <strong>
+        소
+      </strong>
+
+      <p
+        id="cowStatus"
+        class="animal-status"
+      >
+        배가 고픈 것 같아요.
+      </p>
+
+      <button
+        id="cowActionButton"
+        class="animal-action-button"
+      >
+        🌾 밀 2개 먹이주기
+      </button>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<!-- ============================================ -->
+<!-- 목장주 전용 축산물 가공대 -->
+<!-- ============================================ -->
+
+<div
+  id="rancherProcessingArea"
+  class="rancher-processing-area"
+>
+
+  <div class="rancher-processing-header">
+
+    <div>
+      <h3>
+        🛠️ 축산물 가공대
+      </h3>
+
+      <p>
+        목장주는 축산물을 특별한 재료로 가공할 수 있어요.
+      </p>
+    </div>
+
+    <span class="rancher-badge">
+      🐄 목장주 전용
+    </span>
+
+  </div>
+
+
+  <div class="processing-recipe">
+
+    <div class="processing-item">
+      <span>🥛</span>
+      <strong>우유 1개</strong>
+    </div>
+
+    <span class="processing-arrow">
+      →
+    </span>
+
+    <div class="processing-item">
+      <span>🧈</span>
+      <strong>버터 1개</strong>
+    </div>
+
+    <button
+      id="makeButterButton"
+      class="animal-action-button"
+    >
+      🧈 버터 만들기
+    </button>
+
+  </div>
+
+</div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         연못
+    ========================================= -->
+
+    <section
+      id="pondSection"
+      class="pond-section"
+    >
+
+      <div class="pond-header">
+
+        <div>
+
+          <h2>
+            🎣 연못
+          </h2>
+
+          <p>
+            조용히 기다리면 물고기가 찾아올지도 몰라요.
+          </p>
+
+        </div>
+
+        <button
+          id="pondClose"
+          class="section-close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="pond-water">
+
+        <div
+          id="pondVisual"
+          class="pond-visual"
+        >
+          ～～～ 🐟 ～～～
+        </div>
+
+
+        <div
+          id="fishingStatus"
+          class="fishing-status"
+        >
+          오늘은 어떤 물고기가 있을까요?
+        </div>
+
+
+        <button
+          id="fishingButton"
+          class="fishing-button"
+        >
+          🎣 낚시하기
+        </button>
+
+      </div>
+
+
+
+      <div class="fish-guide">
+
+        <h3>
+          🐟 이 연못의 물고기
+        </h3>
+
+
+        <div class="fish-guide-grid">
+
+          <div class="fish-guide-card">
+
+            <span>🐟</span>
+
+            <strong>
+              붕어
+            </strong>
+
+            <small>
+              흔함
+            </small>
+
+          </div>
+
+
+          <div class="fish-guide-card">
+
+            <span>🐠</span>
+
+            <strong>
+              송사리
+            </strong>
+
+            <small>
+              조금 희귀함
+            </small>
+
+          </div>
+
+
+          <div class="fish-guide-card">
+
+            <span>✨</span>
+
+            <strong>
+              황금붕어
+            </strong>
+
+            <small>
+              매우 희귀함
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+        <!-- ========================================
+         숲
+    ========================================= -->
+
+    <section
+      id="forestSection"
+      class="forest-section"
+    >
+
+      <div class="forest-header">
+
+        <div>
+
+          <h2>
+            🌲 숲
+          </h2>
+
+          <p>
+            숲을 돌아다니며 다양한 재료를 채집할 수 있어요.
+          </p>
+
+        </div>
+
+        <button
+          id="forestClose"
+          class="section-close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="forest-area">
+
+        <div
+          id="forestVisual"
+          class="forest-visual"
+        >
+          🌲 🌿 🍄 🌳 🌲
+        </div>
+
+
+        <div
+          id="gatheringStatus"
+          class="gathering-status"
+        >
+          오늘은 숲에서 무엇을 발견할까요?
+        </div>
+
+
+        <button
+          id="gatheringButton"
+          class="gathering-button"
+        >
+          🌲 채집하기
+        </button>
+
+      </div>
+
+
+      <div class="gathering-guide">
+
+        <h3>
+          🧺 숲에서 발견할 수 있는 것
+        </h3>
+
+
+        <div class="gathering-guide-grid">
+
+          <div class="gathering-guide-card">
+
+            <span>🪵</span>
+
+            <strong>
+              나뭇가지
+            </strong>
+
+            <small>
+              흔함
+            </small>
+
+          </div>
+
+
+          <div class="gathering-guide-card">
+
+            <span>🌿</span>
+
+            <strong>
+              허브
+            </strong>
+
+            <small>
+              흔함
+            </small>
+
+          </div>
+
+
+          <div class="gathering-guide-card">
+
+            <span>🍄</span>
+
+            <strong>
+              버섯
+            </strong>
+
+            <small>
+              조금 희귀함
+            </small>
+
+          </div>
+
+
+          <div class="gathering-guide-card">
+
+            <span>🫐</span>
+
+            <strong>
+              베리
+            </strong>
+
+            <small>
+              매우 희귀함
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+<!-- 우리 집 -->
+<section id="homeSection">
+  ...
+</section>
+
+
+<!-- ========================================
+     공방
+========================================= -->
+
+<section
+  id="workshopSection"
+  class="workshop-section"
+>
+
+  <!-- 상단 -->
+  <div class="workshop-header">
+
+    <div class="workshop-title-area">
+      <span class="workshop-title-icon">🔨</span>
+
+      <div>
+        <h2>공방</h2>
+        <p>마을의 작은 가구 작업실</p>
+      </div>
+    </div>
+
+    <button
+      id="workshopClose"
+      class="section-close"
+      type="button"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <!-- 제작 작업대 -->
+  <div class="workbench-panel">
+
+    <div class="workbench-preview">
+
+      <div class="furniture-preview-icon">
+        🪑
+      </div>
+
+      <div class="furniture-preview-name">
+        나무 의자
+      </div>
+
+      <div class="furniture-preview-size">
+        📐 1 × 1
+      </div>
+
+    </div>
+
+
+    <div class="workbench-info">
+
+      <div class="workbench-label">
+        선택한 가구
+      </div>
+
+      <h3>나무 의자</h3>
+
+      <p class="workbench-description">
+        작고 소박한 나무 의자예요.
+        집 안의 빈 공간에 배치할 수 있어요.
+      </p>
+
+
+      <div class="material-box">
+
+        <div class="material-box-title">
+          필요한 재료
+        </div>
+
+        <div class="material-row">
+
+          <span>
+            🪵 나뭇가지
+          </span>
+
+          <strong>
+            ×4
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="craft-button main-craft-button"
+        data-recipe="wood-chair"
+        type="button"
+      >
+        🔨 제작하기
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- 제작 목록 -->
+<div class="workshop-catalog">
+
+  <div class="workshop-catalog-header">
+
+    <div>
+      <strong>제작 목록</strong>
+      <p>만들고 싶은 가구를 골라보세요.</p>
+    </div>
+
+    <span class="catalog-count">
+      5종
+    </span>
+
+  </div>
+
+
+  <div class="furniture-list">
+
+    <!-- 나무 의자 -->
+
+    <button
+      class="furniture-option selected"
+      type="button"
+      data-furniture="wood-chair"
+    >
+      <span class="furniture-option-icon">
+        🪑
+      </span>
+
+      <span class="furniture-option-name">
+        나무 의자
+      </span>
+
+      <span class="furniture-option-size">
+        1×1
+      </span>
+    </button>
+
+
+    <!-- 나무 탁자 -->
+
+    <button
+      class="furniture-option"
+      type="button"
+      data-furniture="wood-table"
+    >
+      <span class="furniture-option-icon">
+        🪵
+      </span>
+
+      <span class="furniture-option-name">
+        나무 탁자
+      </span>
+
+      <span class="furniture-option-size">
+        2×1
+      </span>
+    </button>
+
+
+    <!-- 돌 화분 -->
+
+    <button
+      class="furniture-option"
+      type="button"
+      data-furniture="stone-planter"
+    >
+      <span class="furniture-option-icon">
+        🪴
+      </span>
+
+      <span class="furniture-option-name">
+        돌 화분
+      </span>
+
+      <span class="furniture-option-size">
+        1×1
+      </span>
+    </button>
+
+
+    <!-- 구리 램프 -->
+
+    <button
+      class="furniture-option"
+      type="button"
+      data-furniture="copper-lamp"
+    >
+      <span class="furniture-option-icon">
+        🕯️
+      </span>
+
+      <span class="furniture-option-name">
+        구리 램프
+      </span>
+
+      <span class="furniture-option-size">
+        1×1
+      </span>
+    </button>
+
+    <!-- 포근한 침대 -->
+
+<button
+  class="furniture-option"
+  type="button"
+  data-furniture="simple-bed"
+>
+  <span class="furniture-option-icon">
+    🛏️
+  </span>
+
+  <span class="furniture-option-name">
+    포근한 침대
+  </span>
+
+  <span class="furniture-option-size">
+    2×1
+  </span>
+</button>
+
+  </div>
+
+</div>
+
+
+</section>
+
+
+<!-- ========================================
+     광산
+========================================= -->
+
+<section
+  id="mineSection"
+  class="mine-section"
+>
+
+  <div class="mine-header">
+
+    <div>
+      <h2>
+        ⛏️ 광산
+      </h2>
+
+      <p>
+        곡괭이를 들고 광물을 찾아보세요.
+      </p>
+    </div>
+
+    <button
+      id="mineClose"
+      class="section-close"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <div class="mine-area">
+
+    <div class="mine-visual">
+      🪨 ⛏️ 🪨
+    </div>
+
+    <h3>
+      광산 입구
+    </h3>
+
+    <p id="mineStatus">
+      바위 사이에서 광맥을 찾아볼 수 있을 것 같아요.
+    </p>
+
+    <div class="pickaxe-panel">
+
+  <div class="pickaxe-info">
+    <span id="pickaxeIcon">🪵</span>
+
+    <div>
+      <small>현재 장비</small>
+      <strong id="pickaxeName">
+        낡은 곡괭이
+      </strong>
+    </div>
+  </div>
+
+  <div class="pickaxe-upgrade">
+
+    <p id="pickaxeUpgradeCost">
+      🟤 구리 광석 10개 + 💰 200G
+    </p>
+
+    <button
+      id="upgradePickaxeButton"
+      type="button"
+    >
+      🔨 곡괭이 업그레이드
+    </button>
+
+  </div>
+
+</div>
+
+
+    <!-- ========================================
+     채굴 미니게임
+========================================= -->
+
+<div
+  id="miningGame"
+  class="mining-game"
+>
+
+  <p class="mining-game-title">
+    ⛏️ 광맥을 노려보세요!
+  </p>
+
+  <div
+    id="miningGauge"
+    class="mining-gauge"
+  >
+
+    <!-- 완벽 판정 영역 -->
+    <div class="mining-perfect-zone"></div>
+
+    <!-- 성공 판정 영역 -->
+    <div class="mining-good-zone"></div>
+
+    <!-- 움직이는 표시 -->
+    <div
+      id="miningMarker"
+      class="mining-marker"
+    ></div>
+
+  </div>
+
+<button
+  id="miningHitButton"
+  class="mining-hit-button"
+  type="button"
+>
+  ⛏️ 채굴하기
+</button>
+
+  <p
+    id="miningResult"
+    class="mining-result"
+  >
+    타이밍에 맞춰 내려치세요!
+  </p>
+
+</div>
+
+  </div>
+
+
+  <div class="mine-guide">
+
+    <h3>
+      🪨 발견 가능한 광물
+    </h3>
+
+    <div class="mine-guide-grid">
+
+<div class="mine-guide-grid">
+
+  <div
+    class="mine-guide-card"
+    data-mine-item="stone"
+  ></div>
+
+  <div
+    class="mine-guide-card"
+    data-mine-item="copper-ore"
+  ></div>
+
+  <div
+    class="mine-guide-card"
+    data-mine-item="iron-ore"
+  ></div>
+
+  <div
+    class="mine-guide-card"
+    data-mine-item="gold-ore"
+  ></div>
+
+  <div
+    class="mine-guide-card"
+    data-mine-item="gem"
+  ></div>
+
+  <div
+    class="mine-guide-card"
+    data-mine-item="mysterious-ore"
+  ></div>
+
+</div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ========================================
+     의뢰 게시판
+========================================= -->
+
+<section
+  id="requestBoardSection"
+  class="request-board-section"
+>
+
+  <div class="request-board-header">
+
+    <div>
+      <h2>📌 마을 의뢰 게시판</h2>
+
+      <p>
+        마을 주민들이 부탁을 남겨두었어요.
+      </p>
+    </div>
+
+    <button
+      id="requestBoardClose"
+      class="section-close"
+      type="button"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <div class="request-board-paper">
+
+    <div class="request-board-title">
+      📜 오늘의 부탁
+    </div>
+
+
+    <div
+      id="requestList"
+      class="request-list"
+    >
+
+    
+
+    
+    </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- ========================================
+         마을 상점
+    ========================================= -->
+
+    <section
+      id="shopSection"
+      class="shop-section"
+    >
+
+      <div class="shop-header">
+
+        <div>
+
+          <h2>
+            🏪 마을 상점
+          </h2>
+
+          <p>
+            씨앗을 사고 가방에 있는 수확물과 물고기를 팔 수 있어요.
+          </p>
+
+        </div>
+
+
+        <button
+          id="shopClose"
+          class="shop-close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+
+<!-- ============================================ -->
+<!-- 씨앗 구매 -->
+<!-- ============================================ -->
+
+<div class="shop-group">
+
+  <h3>
+    🌱 씨앗 구매
+  </h3>
+
+
+  <div class="shop-grid">
+
+
+    <!-- 당근 씨앗 -->
+
+    <div class="shop-card">
+
+      <span class="shop-icon">
+        📦
+      </span>
+
+      <strong>
+        당근 씨앗
+      </strong>
+
+      <span>
+        10G
+      </span>
+
+      <button
+        class="buy-button"
+        data-item="carrot-seed"
+        data-price="10"
+      >
+        구매
+      </button>
+
+    </div>
+
+
+    <!-- 감자 씨앗 -->
+
+    <div class="shop-card">
+
+      <span class="shop-icon">
+        📦
+      </span>
+
+      <strong>
+        감자 씨앗
+      </strong>
+
+      <span>
+        15G
+      </span>
+
+      <button
+        class="buy-button"
+        data-item="potato-seed"
+        data-price="15"
+      >
+        구매
+      </button>
+
+    </div>
+
+
+    <!-- 밀 씨앗 -->
+
+    <div class="shop-card">
+
+      <span class="shop-icon">
+        📦
+      </span>
+
+      <strong>
+        밀 씨앗
+      </strong>
+
+      <span>
+        12G
+      </span>
+
+      <button
+        class="buy-button"
+        data-item="wheat-seed"
+        data-price="12"
+      >
+        구매
+      </button>
+
+    </div>
+
+    <!-- 목화 씨앗 -->
+
+<div class="shop-card">
+
+  <span class="shop-icon">
+    ☁️
+  </span>
+
+  <strong>
+    목화 씨앗
+  </strong>
+
+  <span>
+    20G
+  </span>
+
+  <button
+    class="buy-button"
+    data-item="cotton-seed"
+    data-price="20"
+  >
+    구매
+  </button>
+
+</div>
+
+
+    <!-- 🌾 농부 전용: 딸기 씨앗 -->
+
+    <div
+      class="shop-card farmer-only"
+      id="strawberrySeedShopCard"
+    >
+
+      <span class="shop-icon">
+        🍓
+      </span>
+
+      <strong>
+        딸기 씨앗
+      </strong>
+
+      <span>
+        30G
+      </span>
+
+      <button
+        class="buy-button"
+        data-item="strawberry-seed"
+        data-price="30"
+      >
+        구매
+      </button>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+      <!-- 농작물 판매 -->
+
+      <div class="shop-group">
+
+        <h3>
+          🧺 농작물 판매
+        </h3>
+
+
+        <div class="shop-grid">
+
+
+          <div class="shop-card">
+
+            <span class="shop-icon">
+              🥕
+            </span>
+
+            <strong>
+              당근
+            </strong>
+
+            <span>
+              개당 20G
+            </span>
+
+            <small
+              class="shop-owned"
+              data-owned-item="carrot"
+            >
+              가방: 0개
+            </small>
+
+
+            <div class="sell-actions">
+
+              <button
+                class="sell-one-button"
+                data-item="carrot"
+                data-price="20"
+              >
+                1개 판매
+              </button>
+
+              <button
+                class="sell-all-button"
+                data-item="carrot"
+                data-price="20"
+              >
+                전부 판매
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="shop-card">
+
+            <span class="shop-icon">
+              🥔
+            </span>
+
+            <strong>
+              감자
+            </strong>
+
+            <span>
+              개당 30G
+            </span>
+
+            <small
+              class="shop-owned"
+              data-owned-item="potato"
+            >
+              가방: 0개
+            </small>
+
+
+            <div class="sell-actions">
+
+              <button
+                class="sell-one-button"
+                data-item="potato"
+                data-price="30"
+              >
+                1개 판매
+              </button>
+
+              <button
+                class="sell-all-button"
+                data-item="potato"
+                data-price="30"
+              >
+                전부 판매
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+<!-- 🌾 밀 판매 -->
+
+<div class="shop-card">
+
+  <span class="shop-icon">
+    🌾
+  </span>
+
+  <strong>
+    밀
+  </strong>
+
+  <span>
+    개당 25G
+  </span>
+
+  <small
+    class="shop-owned"
+    data-owned-item="wheat"
+  >
+    가방: 0개
+  </small>
+
+  <div class="sell-actions">
+
+    <button
+      class="sell-one-button"
+      data-item="wheat"
+      data-price="25"
+    >
+      1개 판매
+    </button>
+
+    <button
+      class="sell-all-button"
+      data-item="wheat"
+      data-price="25"
+    >
+      전부 판매
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- 🍓 딸기 판매 -->
+
+<div class="shop-card">
+
+  <span class="shop-icon">
+    🍓
+  </span>
+
+  <strong>
+    딸기
+  </strong>
+
+  <span>
+    개당 50G
+  </span>
+
+  <small
+    class="shop-owned"
+    data-owned-item="strawberry"
+  >
+    가방: 0개
+  </small>
+
+  <div class="sell-actions">
+
+    <button
+      class="sell-one-button"
+      data-item="strawberry"
+      data-price="50"
+    >
+      1개 판매
+    </button>
+
+    <button
+      class="sell-all-button"
+      data-item="strawberry"
+      data-price="50"
+    >
+      전부 판매
+    </button>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</div>
+          
+
+        </div>
+
+      </div>
+
+
+<!-- 광물 판매 -->
+
+<div class="shop-group">
+
+  <h3>
+    ⛏️ 광물 판매
+  </h3>
+
+
+  <div class="shop-grid">
+
+
+    <!-- 돌 -->
+
+    <div class="shop-card">
+
+      <span class="shop-icon">
+        🪨
+      </span>
+
+      <strong>
+        돌
+      </strong>
+
+      <span>
+        개당 5G
+      </span>
+
+      <small
+        class="shop-owned"
+        data-owned-item="stone"
+      >
+        가방: 0개
+      </small>
+
+      <div class="sell-actions">
+
+        <button
+          class="sell-one-button"
+          data-item="stone"
+          data-price="5"
+        >
+          1개 판매
+        </button>
+
+        <button
+          class="sell-all-button"
+          data-item="stone"
+          data-price="5"
+        >
+          전부 판매
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 구리 광석 -->
+
+    <div class="shop-card">
+
+      <span class="shop-icon">
+        🟤
+      </span>
+
+      <strong>
+        구리 광석
+      </strong>
+
+      <span>
+        개당 25G
+      </span>
+
+      <small
+        class="shop-owned"
+        data-owned-item="copper-ore"
+      >
+        가방: 0개
+      </small>
+
+      <div class="sell-actions">
+
+        <button
+          class="sell-one-button"
+          data-item="copper-ore"
+          data-price="25"
+        >
+          1개 판매
+        </button>
+
+        <button
+          class="sell-all-button"
+          data-item="copper-ore"
+          data-price="25"
+        >
+          전부 판매
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 철 광석 -->
+
+    <div class="shop-card">
+
+      <span class="shop-icon">
+        ⚙️
+      </span>
+
+      <strong>
+        철 광석
+      </strong>
+
+      <span>
+        개당 45G
+      </span>
+
+      <small
+        class="shop-owned"
+        data-owned-item="iron-ore"
+      >
+        가방: 0개
+      </small>
+
+      <div class="sell-actions">
+
+        <button
+          class="sell-one-button"
+          data-item="iron-ore"
+          data-price="45"
+        >
+          1개 판매
+        </button>
+
+        <button
+          class="sell-all-button"
+          data-item="iron-ore"
+          data-price="45"
+        >
+          전부 판매
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 금 광석 -->
+
+    <div class="shop-card">
+
+      <span class="shop-icon">
+        🟡
+      </span>
+
+      <strong>
+        금 광석
+      </strong>
+
+      <span>
+        개당 80G
+      </span>
+
+      <small
+        class="shop-owned"
+        data-owned-item="gold-ore"
+      >
+        가방: 0개
+      </small>
+
+      <div class="sell-actions">
+
+        <button
+          class="sell-one-button"
+          data-item="gold-ore"
+          data-price="80"
+        >
+          1개 판매
+        </button>
+
+        <button
+          class="sell-all-button"
+          data-item="gold-ore"
+          data-price="80"
+        >
+          전부 판매
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 보석 -->
+
+    <div class="shop-card">
+
+      <span class="shop-icon">
+        💎
+      </span>
+
+      <strong>
+        보석
+      </strong>
+
+      <span>
+        개당 150G
+      </span>
+
+      <small
+        class="shop-owned"
+        data-owned-item="gem"
+      >
+        가방: 0개
+      </small>
+
+      <div class="sell-actions">
+
+        <button
+          class="sell-one-button"
+          data-item="gem"
+          data-price="150"
+        >
+          1개 판매
+        </button>
+
+        <button
+          class="sell-all-button"
+          data-item="gem"
+          data-price="150"
+        >
+          전부 판매
+        </button>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+<!-- ============================================ -->
+<!-- 숲 채집물 판매 -->
+<!-- ============================================ -->
+
+<div class="shop-group">
+
+  <h3>
+    🌲 숲 채집물 판매
+  </h3>
+
+  <div class="shop-grid">
+
+    <!-- 나뭇가지 -->
+
+    <div class="shop-card">
+
+      <span class="shop-icon">
+        🪵
+      </span>
+
+      <strong>
+        나뭇가지
+      </strong>
+
+      <span>
+        개당 5G
+      </span>
+
+      <small
+        class="shop-owned"
+        data-owned-item="branch"
+      >
+        가방: 0개
+      </small>
+
+      <div class="sell-actions">
+
+        <button
+          class="sell-one-button"
+          data-item="branch"
+          data-price="5"
+        >
+          1개 판매
+        </button>
+
+        <button
+          class="sell-all-button"
+          data-item="branch"
+          data-price="5"
+        >
+          전부 판매
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 허브 -->
+
+    <div class="shop-card">
+
+      <span class="shop-icon">
+        🌿
+      </span>
+
+      <strong>
+        허브
+      </strong>
+
+      <span>
+        개당 12G
+      </span>
+
+      <small
+        class="shop-owned"
+        data-owned-item="herb"
+      >
+        가방: 0개
+      </small>
+
+      <div class="sell-actions">
+
+        <button
+          class="sell-one-button"
+          data-item="herb"
+          data-price="12"
+        >
+          1개 판매
+        </button>
+
+        <button
+          class="sell-all-button"
+          data-item="herb"
+          data-price="12"
+        >
+          전부 판매
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 버섯 -->
+
+    <div class="shop-card">
+
+      <span class="shop-icon">
+        🍄
+      </span>
+
+      <strong>
+        버섯
+      </strong>
+
+      <span>
+        개당 18G
+      </span>
+
+      <small
+        class="shop-owned"
+        data-owned-item="mushroom"
+      >
+        가방: 0개
+      </small>
+
+      <div class="sell-actions">
+
+        <button
+          class="sell-one-button"
+          data-item="mushroom"
+          data-price="18"
+        >
+          1개 판매
+        </button>
+
+        <button
+          class="sell-all-button"
+          data-item="mushroom"
+          data-price="18"
+        >
+          전부 판매
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 베리 -->
+
+    <div class="shop-card">
+
+      <span class="shop-icon">
+        🫐
+      </span>
+
+      <strong>
+        베리
+      </strong>
+
+      <span>
+        개당 35G
+      </span>
+
+      <small
+        class="shop-owned"
+        data-owned-item="berry"
+      >
+        가방: 0개
+      </small>
+
+      <div class="sell-actions">
+
+        <button
+          class="sell-one-button"
+          data-item="berry"
+          data-price="35"
+        >
+          1개 판매
+        </button>
+
+        <button
+          class="sell-all-button"
+          data-item="berry"
+          data-price="35"
+        >
+          전부 판매
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+      <!-- 물고기 판매 -->
+
+      <div class="shop-group">
+
+        <h3>
+          🎣 물고기 판매
+        </h3>
+
+
+        <div class="shop-grid">
+
+
+          <div class="shop-card">
+
+            <span class="shop-icon">
+              🐟
+            </span>
+
+            <strong>
+              붕어
+            </strong>
+
+            <span>
+              개당 15G
+            </span>
+
+            <small
+              class="shop-owned"
+              data-owned-item="crucian"
+            >
+              가방: 0개
+            </small>
+
+
+            <div class="sell-actions">
+
+              <button
+                class="sell-one-button"
+                data-item="crucian"
+                data-price="15"
+              >
+                1개 판매
+              </button>
+
+              <button
+                class="sell-all-button"
+                data-item="crucian"
+                data-price="15"
+              >
+                전부 판매
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="shop-card">
+
+            <span class="shop-icon">
+              🐠
+            </span>
+
+            <strong>
+              송사리
+            </strong>
+
+            <span>
+              개당 25G
+            </span>
+
+            <small
+              class="shop-owned"
+              data-owned-item="minnow"
+            >
+              가방: 0개
+            </small>
+
+
+            <div class="sell-actions">
+
+              <button
+                class="sell-one-button"
+                data-item="minnow"
+                data-price="25"
+              >
+                1개 판매
+              </button>
+
+              <button
+                class="sell-all-button"
+                data-item="minnow"
+                data-price="25"
+              >
+                전부 판매
+              </button>
+
+            </div>
+
+          </div>
+
+      <!-- 🎣 낚시꾼 전용 어획물: 새우 -->
+
+<div class="shop-card">
+
+  <span class="shop-icon">
+    🦐
+  </span>
+
+  <strong>
+    새우
+  </strong>
+
+  <span>
+    개당 45G
+  </span>
+
+  <small
+    class="shop-owned"
+    data-owned-item="shrimp"
+  >
+    가방: 0개
+  </small>
+
+  <div class="sell-actions">
+
+    <button
+      class="sell-one-button"
+      data-item="shrimp"
+      data-price="45"
+    >
+      1개 판매
+    </button>
+
+    <button
+      class="sell-all-button"
+      data-item="shrimp"
+      data-price="45"
+    >
+      전부 판매
+    </button>
+
+  </div>
+
+</div>
+
+          <div class="shop-card rare-shop-card">
+
+            <span class="shop-icon">
+              ✨
+            </span>
+
+            <strong>
+              황금붕어
+            </strong>
+
+            <span>
+              개당 100G
+            </span>
+
+            <small
+              class="shop-owned"
+              data-owned-item="golden-crucian"
+            >
+              가방: 0개
+            </small>
+
+
+            <div class="sell-actions">
+
+              <button
+                class="sell-one-button"
+                data-item="golden-crucian"
+                data-price="100"
+              >
+                1개 판매
+              </button>
+
+              <button
+                class="sell-all-button"
+                data-item="golden-crucian"
+                data-price="100"
+              >
+                전부 판매
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+          <!-- 달걀 판매 -->
+
+          <div class="shop-card">
+
+            <span class="shop-icon">
+              🥚
+            </span>
+
+            <strong>
+              달걀
+            </strong>
+
+            <span>
+              개당 35G
+            </span>
+
+            <small
+              class="shop-owned"
+              data-owned-item="egg"
+            >
+              가방: 0개
+            </small>
+
+            <div class="sell-actions">
+
+              <button
+                class="sell-one-button"
+                data-item="egg"
+                data-price="35"
+              >
+                1개 판매
+              </button>
+
+              <button
+                class="sell-all-button"
+                data-item="egg"
+                data-price="35"
+              >
+                전부 판매
+              </button>
+
+            </div>
+
+          </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ========================================
+       가방 버튼
+  ========================================= -->
+
+  <button
+    id="inventoryButton"
+    class="inventory-button"
+  >
+    🎒
+  </button>
+
+
+
+  <!-- ========================================
+       가방 패널
+  ========================================= -->
+
+  <aside
+    id="inventoryPanel"
+    class="inventory-panel"
+  >
+
+    <div class="inventory-header">
+
+      <div>
+
+        <strong>
+          🎒 가방
+        </strong>
+
+        <span
+          id="inventorySlotCount"
+          class="inventory-slot-count"
+        >
+          0 / 12
+        </span>
+
+      </div>
+
+
+      <button
+        id="inventoryClose"
+        class="inventory-close"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="inventory-grid">
+    </div>
+
+  </aside>
+
+
+
+  <!-- ========================================
+       우클릭 이동 메뉴
+  ========================================= -->
+
+  <div
+    id="itemContextMenu"
+    class="item-context-menu"
+  >
+
+    <div class="context-item-info">
+
+      <span
+        id="contextItemIcon"
+        class="context-item-icon"
+      >
+        🥕
+      </span>
+
+
+      <div>
+
+        <strong id="contextItemName">
+          당근
+        </strong>
+
+        <small id="contextItemCount">
+          보유: 0
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="contextMoveOne"
+      class="context-menu-button"
+    >
+      📦 1개 이동
+    </button>
+
+
+    <button
+      id="contextMoveAll"
+      class="context-menu-button"
+    >
+      📦 전부 이동
+    </button>
+
+
+    <button
+      id="contextCancel"
+      class="context-menu-cancel"
+    >
+      취소
+    </button>
+
+  </div>
+
+
+
+
+
+  <!-- ========================================
+       설정 버튼
+  ========================================= -->
+
+  <button
+    id="settingsButton"
+    class="settings-button"
+    type="button"
+  >
+    ⚙️
+  </button>
+
+
+  <!-- ========================================
+       설정 창
+  ========================================= -->
+
+  <div
+    id="settingsOverlay"
+    class="settings-overlay"
+  >
+
+    <div class="settings-panel">
+
+      <div class="settings-header">
+
+        <h2>
+          ⚙️ 설정
+        </h2>
+
+        <button
+          id="settingsClose"
+          class="settings-close"
+          type="button"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="settings-group">
+
+        <h3>
+          💾 플레이 데이터
+        </h3>
+
+        <p>
+          게임 진행 상황은 이 브라우저에 저장됩니다.
+        </p>
+
+        <button
+          id="deleteSaveButton"
+          class="delete-save-button"
+          type="button"
+        >
+          🗑️ 플레이 데이터 삭제
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================
+       데이터 삭제 확인 창
+  ========================================= -->
+
+  <div
+    id="deleteSaveOverlay"
+    class="delete-confirm-overlay"
+  >
+
+    <div class="delete-confirm-panel">
+
+      <div class="delete-warning-icon">
+        ⚠️
+      </div>
+
+      <h2>
+        플레이 데이터를 삭제할까요?
+      </h2>
+
+      <p>
+        골드, 가방, 보관함, 농장 진행도와<br>
+        축산 농장 데이터가 모두 삭제됩니다.
+      </p>
+
+      <strong>
+        삭제한 데이터는 복구할 수 없습니다.
+      </strong>
+
+      <div class="delete-confirm-actions">
+
+        <button
+          id="cancelDeleteButton"
+          class="cancel-delete-button"
+          type="button"
+        >
+          취소
+        </button>
+
+        <button
+          id="confirmDeleteButton"
+          class="confirm-delete-button"
+          type="button"
+        >
+          🗑️ 삭제하기
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+<!-- ============================================ -->
+<!-- 직업 선택 팝업 -->
+<!-- ============================================ -->
+
+<div id="jobSelectOverlay" class="job-select-overlay">
+
+  <div class="job-select-modal">
+
+    <div class="job-select-title">
+      🎉 직업 선택
+    </div>
+
+    <p class="job-select-description">
+      새로운 진로를 선택할 수 있어요!<br>
+      직업마다 특별한 콘텐츠가 해금됩니다.
+    </p>
+
+    <div class="job-card-list">
+
+      <button
+        class="job-card"
+        data-job="farmer"
+      >
+        <span class="job-icon">🌾</span>
+        <strong>농부</strong>
+        <span>특별한 작물을 재배할 수 있어요.</span>
+      </button>
+
+
+      <button
+        class="job-card"
+        data-job="fisher"
+      >
+        <span class="job-icon">🎣</span>
+        <strong>낚시꾼</strong>
+        <span>특별한 어종을 잡을 수 있어요.</span>
+      </button>
+
+
+      <button
+        class="job-card"
+        data-job="rancher"
+      >
+        <span class="job-icon">🐄</span>
+        <strong>목장주</strong>
+        <span>축산물을 가공할 수 있어요.</span>
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+<script defer src="game.js"></script>
+
+<!-- 잠자기 연출 -->
+<div id="sleepOverlay" class="sleep-overlay">
+  <div class="sleep-overlay-text">
+    💤 Zzz...
+  </div>
+</div>  
+
+<!-- ========================================
+     자연스러운 날짜 변경 연출
+========================================= -->
+
+<div
+  id="dayChangeOverlay"
+  class="day-change-overlay"
+>
+  <div
+    id="dayChangeContent"
+    class="day-change-content"
+  >
+  </div>
+</div>
+
+</body>
+
+</html>
+
